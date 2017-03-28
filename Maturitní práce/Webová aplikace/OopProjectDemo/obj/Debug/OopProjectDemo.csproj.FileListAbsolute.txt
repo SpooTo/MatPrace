@@ -1,0 +1,12 @@
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\OopProjectDemo.exe.config
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\OopProjectDemo.exe
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\OopProjectDemo.pdb
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\EntityFramework.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\Task.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\Task.pdb
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\EntityFramework.xml
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\obj\Debug\OopProjectDemo.csprojResolveAssemblyReference.cache
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\obj\Debug\OopProjectDemo.exe
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\OopProjectDemo\obj\Debug\OopProjectDemo.pdb

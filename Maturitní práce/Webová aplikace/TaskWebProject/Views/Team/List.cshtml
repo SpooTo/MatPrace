@@ -1,0 +1,74 @@
+﻿@using TaskManager.Entities;
+@using System.Data.Entity;
+
+@model Team
+
+
+@{
+    ViewBag.Title = "Team";
+    ViewBag.Subtitle = "List";
+    DbSet<Team> teams = ViewBag.teams;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Teams</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="tig-12">Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Team t in teams)
+                {
+                    <tr class="middle">
+                        <td><div>@t.title</div></td>
+                        <td>
+                            <div>
+                                @Html.ActionLink("Details", "Details", new { id = t.id }, new { @class = "btn btn-primary btn-xs" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#Create">Create New Team</button>
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "Team", null, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal fade modal-success" id="Create" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Team</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.title, "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.description, "Desription:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Create" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

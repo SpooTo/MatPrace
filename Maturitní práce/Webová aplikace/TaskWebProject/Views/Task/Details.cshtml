@@ -1,0 +1,127 @@
+﻿@using TaskManager.Entities;
+@using TaskWebProject.Helpers;
+@using System.Web.Mvc.Html;
+@using Microsoft.AspNet.Identity;
+
+
+@model Task
+
+@{
+
+    SelectList list = new SelectList(ViewBag.Users, "id", "UserName");
+
+
+
+    ViewBag.Title = "Task";
+    ViewBag.Subtitle = Model.title;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h2 class="panel-title pull-left">@Model.title</h2>
+        <div class="btn-group pull-right">
+
+            @*@using (Html.BeginForm("Assign", "Task", new { TaskId = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+            {
+                <div class="form-group">
+                    @Html.Label("user", "User:", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("user", list, new { @class = "form-control" })
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info pull-right">Assign</button>
+            }*@
+            @Html.ActionLink("Take", "Take", "Task", new { TaskID = Model.id }, new { @class = "btn btn-info btn-xs" })
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#Edit">Edit</button>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#Delete">Delete</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>@Model.text</p>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-striped TeamList">
+            <tr>
+                <th class="tig-2">Priority:</th>
+                <td class="tig-10">@Model.priority</td>
+            </tr>
+            <tr>
+                <th class="tig-2">Status:</th>
+                <td class="tig-10">
+                    @UI.DrawLabel(typeof(TaskStates), Model.state)
+                </td>
+            </tr>
+            <tr>
+                <th class="tig-2">Created:</th>
+                <td class="tig-10">@Model.datecreated</td>
+            </tr>
+            @*<tr>
+                <th class="tig-2">Deadline:</th>
+                <td class="tig-10">@Model.deadline</td>
+            </tr>*@
+        </table>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Update", "Task", new { TaskId = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal modal-primary fade" id="TaskEdit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Task Edit</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.title, "Title:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.text, "Text:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.text, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.priority, "Priority:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.priority, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => m.title, "Deadline:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.deadline, new { @class = "form-control" })
+                        </div>
+                    </div>*@
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal modal-danger fade" id="Delete" role="alertdialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header modal-no-body modal-header-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Are you sure you want to remove this task?
+                </h4>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                @Html.ActionLink("Delete", "Delete", new { id = Model.id }, new { @class = "btn btn-danger pull-right" })
+            </div>
+        </div>
+    </div>
+</div>
+

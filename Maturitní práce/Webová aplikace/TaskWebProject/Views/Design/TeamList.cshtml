@@ -1,0 +1,43 @@
+﻿@using TaskManager.Entities;
+@using System.Data.Entity;
+
+@model DbSet<Team>
+
+
+@{
+    ViewBag.Title = "Team";
+    ViewBag.Subtitle = "List";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Teams</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="tig-12">Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Team t in Model)
+                {
+                    <tr class="middle">
+                        <td><div>@t.title</div></td>
+                        <td>
+                            <div>
+                                @Html.ActionLink("Details", "TeamDetails", new { id = t.id }, new { @class = "btn btn-primary btn-xs" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add Team", "TeamAdd", null, new { @class = "btn btn-success btn-block" })
+    </div>
+</div>
+

@@ -1,0 +1,142 @@
+﻿@using TaskManager.Entities;
+@using TaskManager.Managers;
+@using TaskWebProject.Models;
+
+@model Team
+
+@{
+    ViewBag.Title = "Team";
+    ViewBag.Subtitle = Model.title;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h2 class="panel-title pull-left">@Model.title</h2>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#TeamEdit">Edit</button>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#TeamRemove">Remove</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>
+            @Model.description
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Members</h2>
+            </div>
+            <div class="panel-body panel-table-inserted table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="tig-12">Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (string userId in TeamManager.GetTeamMembersIds(Model))
+                        {
+                            System.Data.Entity.DbSet<ApplicationUser> users = ViewBag.AppUsers;
+                            ApplicationUser user = users.FirstOrDefault(x => x.Id == userId);
+
+                            <tr class="center middle">
+                                <td class="text-left">@user.UserName</td>
+                                <td>
+                                    @Html.ActionLink("Details", "UserDetails", null@*new { id = m.Id }*@, new { @class = "btn btn-primary btn-xs" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer TeamList ">
+                @Html.ActionLink("Add Team Member", "TeamMemberAdd", null, new { @class = "btn btn-success btn-block" })
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Projects</h2>
+            </div>
+            <div class="panel-body panel-table-inserted table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="tig-12">Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Project p in Model.projects)
+                        {
+                            <tr class="center middle">
+                                <td class="text-left">@p.name</td>
+                                <td>
+                                    @Html.ActionLink("Details", "ProjectDetails", new { id = p.id }, new { @class = "btn btn-primary btn-xs" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer TeamList ">
+                @Html.ActionLink("Add Project", "ProjectAdd", null, new { @class = "btn btn-success btn-block" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("TeamDetails", "Design", new { TaskId = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal modal-primary fade" id="TeamEdit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Team Edit</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.title, "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.title, "Description:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal modal-danger fade" id="TeamRemove" role="alertdialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header modal-no-body modal-header-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Are you sure you want to remove this team?
+                </h4>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                @Html.ActionLink("Remove", "TeamRemove", new { id = Model.id }, new { @class = "btn btn-danger pull-right" })
+            </div>
+        </div>
+    </div>
+</div>

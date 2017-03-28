@@ -1,0 +1,70 @@
+﻿/******************* Colorfull Modals *******************/
+/*
+ * Colorfull modals by Jakub Senohrábek
+ * Created 22.5.2016
+ */
+
+.modal.modal-danger .modal-header {
+    background-color: #d2322d;
+    color: white;
+    border-bottom: none !important;
+}
+
+.modal.modal-danger .modal-header .close {
+    color: white;
+    text-shadow: 0 1px 0 black;
+    opacity: 0.8;
+    line-height: inherit;
+}
+
+.modal.modal-primary .modal-header {
+    background-color: #3276b1;
+    color: white;
+    border-bottom: none !important;
+}
+
+.modal.modal-primary .modal-header .close {
+    color: white;
+    text-shadow: 0 1px 0 black;
+    opacity: 0.8;
+    line-height: inherit;
+}
+
+.modal.modal-warning .modal-header {
+    background-color: #ed9c28;
+    color: white;
+    border-bottom: none !important;
+}
+
+.modal.modal-warning .modal-header .close {
+    color: white;
+    text-shadow: 0 1px 0 black;
+    opacity: 0.8;
+    line-height: inherit;
+}
+
+.modal.modal-info .modal-header {
+    background-color: #39b3d7;
+    color: white;
+    border-bottom: none !important;
+}
+
+.modal.modal-info .modal-header .close {
+    color: white;
+    text-shadow: 0 1px 0 black;
+    opacity: 0.8;
+    line-height: inherit;
+}
+
+.modal.modal-success .modal-header {
+    background-color: #47a447;
+    color: white;
+    border-bottom: none !important;
+}
+
+.modal.modal-success .modal-header .close {
+    color: white;
+    text-shadow: 0 1px 0 black;
+    opacity: 0.8;
+    line-height: inherit;
+}

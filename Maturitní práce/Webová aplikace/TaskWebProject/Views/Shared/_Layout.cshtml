@@ -1,0 +1,164 @@
+﻿@*@using TaskManager.Entities
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/ColorfullModals")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Task Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Users", "UserList", "Design")</li>
+                    <li>@Html.ActionLink("Teams", "TeamList", "Design")</li>
+                    <li>@Html.ActionLink("Projects", "ProjectList", "Design")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <header>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="page-header">
+                        <h1>
+                            @ViewBag.Title 
+                            @if (!String.IsNullOrEmpty(ViewBag.Subtitle))
+                            {
+                                <small>@ViewBag.Subtitle</small>
+                            }
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ol class="breadcrumb">
+                        <li><a href="#">TaskManager</a></li>
+                        @if (!String.IsNullOrEmpty(ViewBag.Subtitle))
+                        {
+                            <li>@ViewBag.Title</li>
+                            <li class="active">@ViewBag.Subtitle</li>
+                        }
+                        else
+                        {
+                            <li class="active">@ViewBag.Title</li>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TaskManager</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>*@
+
+@using TaskManager.Entities
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/ColorfullModals.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Task Manager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Users", "List", "User")</li>
+                    <li>@Html.ActionLink("Teams", "List", "Team")</li>
+                    <li>@Html.ActionLink("Projects", "List", "Project")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <header>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="page-header">
+                        <h1>
+                            @ViewBag.Title
+                            @if (!String.IsNullOrEmpty(ViewBag.Subtitle))
+                            {
+                                <small>@ViewBag.Subtitle</small>
+                            }
+                        </h1>
+                    </div>
+                </div>
+                @*<div class="col-md-4">
+                    <ol class="breadcrumb">
+                        <li><a href="#">TaskManager</a></li>
+                        @if (!String.IsNullOrEmpty(ViewBag.Subtitle))
+                        {
+                            <li>@ViewBag.Title</li>
+                            <li class="active">@ViewBag.Subtitle</li>
+                        }
+                        else
+                        {
+                            <li class="active">@ViewBag.Title</li>
+                        }
+                    </ol>
+                </div>*@
+            </div>
+        </header>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TaskManager</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $("[data-autocomplete=users]").autocomplete({
+        source: '@Url.Action("Get","User")',
+        minLength: 0,
+        delay: 50
+    }).focus(function () {
+        $(this).autocomplete("search", $(this).val());
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\Task.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\Task.pdb
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\EntityFramework.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\EntityFramework.xml
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.csprojResolveAssemblyReference.cache
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.AddedTasks.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.ProjectAndTeam.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.Tasks.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.ChangedTaskProjectType.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.ChangedDeadLineAndDateCreatedDataTypes.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.AddedTeamsMembers.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.ChangedTeamsMembersIdTypes.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.csproj.GenerateResource.Cache
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.dll
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.pdb
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.removedrightscar.resources
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\Task.dll
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\Task.pdb
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\EntityFramework.dll
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.dll
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\EntityFramework.xml
+D:\Download\VS Save\7\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.xml
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\Task.csprojResolveAssemblyReference.cache
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\Task.dll
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\Task.pdb
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.init.resources
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\Task.csproj.GenerateResource.Cache
+D:\Download\VS Save\7\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.second.resources
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\Task.dll
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\Task.pdb
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\EntityFramework.dll
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\EntityFramework.xml
+C:\Users\Milan\Desktop\OopProjectDemo\Task\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\Task.csprojResolveAssemblyReference.cache
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.init.resources
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.second.resources
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\Task.csproj.GenerateResource.Cache
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\Task.dll
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\Task.pdb
+C:\Users\Milan\Desktop\OopProjectDemo\Task\obj\Debug\TaskManager.Migrations.third.resources

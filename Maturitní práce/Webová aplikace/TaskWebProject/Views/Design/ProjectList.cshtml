@@ -1,0 +1,47 @@
+﻿@using System.Data.Entity;
+@using TaskManager.Entities;
+@using TaskManager.Managers;
+
+@model DbSet<Project>
+
+@{
+    ViewBag.Title = "Project";
+    ViewBag.Subtitle = "List";
+    DbSet<Team> teams = ViewBag.teams;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Projects</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="tig-12">Name</th>
+                    <th>Team</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (Project p in Model)
+                    {
+                    <tr class="middle">
+                        <td>@p.name</td>
+                        <td>@ProjectManager.GetMainTeam(p).title</td>
+                        <td>
+                            @Html.ActionLink("Details", "ProjectDetails", new { id = p.id }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer TeamList">
+        @Html.ActionLink("Add Project", "ProjectAdd", null, new { @class = "btn btn-success btn-block" })
+    </div>
+</div>
+

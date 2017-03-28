@@ -1,0 +1,44 @@
+﻿@using System.Data.Entity;
+@using TaskWebProject.Models;
+@using TaskManager.Entities;
+
+@model DbSet<ApplicationUser>
+
+@{
+    ViewBag.Title = "User";
+    ViewBag.Subtitle = "List";
+    DbSet<TeamsMembers> members = ViewBag.members;
+    DbSet<Team> teams = ViewBag.teams;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Users</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-striped TeamList">
+            <thead>
+                <tr>
+                    <th class="tig-6">Name</th>
+                    <th class="tig-6">Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ApplicationUser user in Model)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.Email</td>                       
+                        <td>
+                            @Html.ActionLink("Details", "UserDetails", new { id = user.Id }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Add User", "UserAdd", null, new { @class = "btn btn-success btn-block" })
+    </div>
+</div>

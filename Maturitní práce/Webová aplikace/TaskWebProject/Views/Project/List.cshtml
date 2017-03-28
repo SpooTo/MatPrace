@@ -1,0 +1,82 @@
+﻿@using System.Data.Entity;
+@using TaskManager.Entities;
+@using TaskManager.Managers;
+
+@model Project
+
+@{
+    ViewBag.Title = "Project";
+    ViewBag.Subtitle = "List";
+    DbSet<Team> teams = ViewBag.teams;
+    DbSet<Project> projects = ViewBag.projects;
+    SelectList tlist = new SelectList(teams, "id", "title");
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Projects</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th class="tig-12">Name</th>
+                    <th>Team</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Project p in projects)
+                {
+                    <tr class="middle">
+                        <td>@p.name</td>
+                        <td>@ProjectManager.GetMainTeam(p).title</td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = p.id }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer TeamList">
+        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#Create">Create Project</button>
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "Project", null, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal fade modal-success" id="Create" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Project</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.name, "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.description, "Description:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("team", "Team:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(m => m.TeamId, tlist, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Create" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

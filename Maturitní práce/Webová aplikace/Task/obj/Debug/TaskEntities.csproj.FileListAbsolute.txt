@@ -1,0 +1,4 @@
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskEntities.csprojResolveAssemblyReference.cache
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.Migrations.addedTableCar.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\Task.Migrations.removedCar.resources
+C:\Users\Milan\Documents\GitHub\task_manager\OopProjectDemo\Task\obj\Debug\TaskEntities.csproj.GenerateResource.Cache

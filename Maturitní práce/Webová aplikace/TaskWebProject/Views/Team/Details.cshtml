@@ -1,0 +1,189 @@
+﻿@using TaskManager.Entities;
+@using TaskManager.Managers;
+@using TaskWebProject.Models;
+
+
+@model Team
+
+@{
+    ViewBag.Title = "Team";
+    ViewBag.Subtitle = Model.title;
+    bool isMember = ViewBag.isMember;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h2 class="panel-title pull-left">@Model.title</h2>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#Edit">Edit</button>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#Delete">Delete</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>
+            @Model.description
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Members</h2>
+            </div>
+            <div class="panel-body panel-table-inserted table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="tig-12">Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (string userId in TeamManager.GetTeamMembersIds(Model))
+                        {
+                            System.Data.Entity.DbSet<ApplicationUser> users = ViewBag.AppUsers;
+                            ApplicationUser user = users.FirstOrDefault(x => x.Id == userId);
+
+                            <tr class="center middle">
+                                <td class="text-left">@user.UserName</td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", "User", new { id = user.Id }, new { @class = "btn btn-primary btn-xs" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (isMember)
+            {
+            <div class="panel-footer TeamList ">
+                @Html.ActionLink("Leave", "Leave", new { id = Model.id }, new { @class = "btn btn-success btn-block" })
+            </div>
+            }
+            @if (isMember== false)
+            {
+                <div class="panel-footer TeamList ">
+                    @Html.ActionLink("Join", "Join", new { id = Model.id }, new { @class = "btn btn-success btn-block" })
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Projects</h2>
+            </div>
+            <div class="panel-body panel-table-inserted table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="tig-12">Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    @if (Model.projects != null)
+                    {
+                    <tbody>
+                        @foreach (Project p in Model.projects)
+                        {
+                            <tr class="center middle">
+                                <td class="text-left">@p.name</td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", "Project", new { id = p.id }, new { @class = "btn btn-primary btn-xs" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    }
+                </table>
+            </div>
+            <div class="panel-footer TeamList ">
+                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#CreateProject">Create Project</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Update", "Team", new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal modal-primary fade" id="Edit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Team Edit</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.title, "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.title, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.description, "Description:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal modal-danger fade" id="Delete" role="alertdialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header modal-no-body">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Are you sure you want to remove this team?
+                </h4>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                @Html.ActionLink("Delete", "Delete", new { id = Model.id }, new { @class = "btn btn-danger pull-right" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm("CreateFromTeamDetails", "Project", new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal fade modal-success" id="CreateProject" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Project</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.Label("name", "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBox("name", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("desc", "Description:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextArea("desc", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Create" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

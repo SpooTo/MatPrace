@@ -1,0 +1,313 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content {
+    padding: 0 !important;
+    margin: 15px;
+    max-width: 100% !important;
+}
+
+.container {
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+.navbar .navbar-brand {
+    margin-left: 0px !important;
+}
+
+@media (max-width: 991px) {
+    .navbar .navbar-brand {
+        margin-left: 15px !important;
+    }
+
+    .navbar .navbar-toggle {
+        margin-right: 23px !important;
+    }
+
+    .navbar li {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+textarea {
+    max-width: 100% !important;
+}
+
+* {
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+}
+
+.navbar-inverse {
+    background-color: #272727 !important;
+    border-bottom: 2px solid #5c5c5c !important;
+}
+
+.navbar-nav li {
+    border-left: 1px solid #303030 !important;
+}
+
+.navbar li, .navbar li a {
+    color: #dddddd !important;
+}
+
+navbar li:hover, .navbar li a:hover {
+    color: #ffffff !important;
+}
+
+.navbar-nav li:last-child {
+    border-right: 1px solid #303030 !important;
+}
+
+.navbar-nav li:hover {
+    background-color: #303030 !important;
+}
+
+.tig-1 {
+    width: 8.3% !important;
+}
+
+.tig-2 {
+    width: 16.6% !important;
+}
+
+.tig-3 {
+    width: 25% !important;
+}
+
+.tig-4 {
+    width: 33.3% !important;
+}
+
+.tig-5 {
+    width: 41.6% !important;
+}
+
+.tig-6 {
+    width: 50% !important;
+}
+
+.tig-7 {
+    width: 58.3% !important;
+}
+
+.tig-8 {
+    width: 66.6% !important;
+}
+
+.tig-9 {
+    width: 75% !important;
+}
+
+.tig-10 {
+    width: 83.3% !important;
+}
+
+.tig-11 {
+    width: 91.6% !important;
+}
+
+.tig-12 {
+    width: 100% !important;
+}
+
+
+.panel .panel-body.panel-table-inserted {
+    padding: 0 !important;
+}
+
+.panel .panel-body.panel-table-inserted table {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+.panel .panel-body.panel-table-inserted table tr td:first-child, .panel .panel-body.panel-table-inserted table tr th:first-child {
+    border-left: none !important;
+}
+
+.panel .panel-body.panel-table-inserted table tr td:last-child, .panel .panel-body.panel-table-inserted table tr th:last-child {
+    border-right: none !important;
+}
+
+.panel .panel-body.panel-table-inserted table tr:last-child {
+    border-bottom: none !important;
+}
+
+td.middle {
+    vertical-align: middle !important;
+}
+
+td.nowrap {
+    white-space: nowrap !important;
+}
+
+.table-item-keep {
+    white-space: nowrap !important;
+}
+
+tr.middle td, .tr.middle th {
+    vertical-align: middle !important;
+}
+
+tr.center {
+    text-align: center !important;
+}
+
+.page-header, h1, h2, h3, h4, h5, h6 {
+    margin: 0px !important;
+    padding: 0px !important;
+    border-bottom: none;
+}
+
+.breadcrumb {
+    background-color: #e6e6e6;
+    margin-bottom: 0px !important;
+}
+
+.page-header, .breadcrumb {
+    margin-bottom: 10px !important;
+}
+
+.page-header small {
+    white-space: nowrap;
+}
+
+.btn-group {
+  white-space: nowrap;
+}
+
+.btn-group .btn {
+    float: none;
+    display: inline-block;
+}
+
+/******************* Grow-able labels *******************/
+
+.label-grow {
+    width: 100%;
+    display: inline-block;
+}
+
+/***************** Better Panel Titles ******************/
+
+.panel-heading .panel-title {
+    font-size: 130%;
+    font-weight: bold;
+}
+
+/******************* Tables in modal ********************/
+
+.modal-table-inserted {
+    padding: 0 !important;
+}
+
+.modal-table-inserted table {
+    margin-bottom: 0px !important;
+}
+
+/******************* Modal footer fix *******************/
+
+.modal-footer {
+    margin-top: 0px !important;
+}
+
+/******************* Stripped forms *********************/
+
+form.form-stripped .form-group:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+form.form-stripped .form-group {
+    border-top: 1px solid #dddddd;
+}
+
+form.form-stripped .form-group {
+    margin: 0 !important;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+form.form-stripped .form-group .control-label {
+    text-align: left;
+}
+
+.modal-no-body {
+    border-bottom: none !important;
+}
+
+
+/******************* Modal Header Colors *********************/
+
+.modal-header-success {
+   color:#fff;
+   /*padding:9px 15px;
+   border-bottom:1px solid #eee;*/
+   background-color: #5cb85c ;
+   /*-webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+.modal-header-warning {
+   color:#fff;
+   /*padding:9px 15px;
+   border-bottom:1px solid #eee;*/
+   background-color: #f0ad4e ;
+   /*-webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+.modal-header-danger {
+   color:#fff;
+   /*padding:9px 15px;
+   border-bottom:1px solid #eee;*/
+   background-color: #d9534f ;
+   /*-webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+.modal-header-info {
+   color:#fff;
+   /*padding:9px 15px;
+   border-bottom:1px solid #eee;*/
+   background-color: #5bc0de ;
+   /*-webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}
+.modal-header-primary {
+   color:#fff;
+   /*padding:9px 15px;
+   border-bottom:1px solid #eee;*/
+   background-color: #428bca ;
+   /*-webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;*/
+}

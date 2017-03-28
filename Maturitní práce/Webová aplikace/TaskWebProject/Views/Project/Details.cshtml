@@ -1,0 +1,174 @@
+﻿@using System.Data.Entity;
+@using TaskManager.Entities;
+@using TaskWebProject.Helpers;
+
+@model Project
+
+@{
+    ViewBag.Title = "Project";
+    ViewBag.Subtitle = Model.name;
+    DbSet<Team> teams = ViewBag.teams;
+    SelectList dTeams = new SelectList(teams, "id", "title");
+    IList<SelectListItem> prior = EnumHelper.GetSelectList(typeof(Priorities), Priorities.Medium);
+
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <h2 class="panel-title pull-left">@Model.name</h2>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#Edit">Edit</button>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#Delete">Delete</button>
+        </div>
+    </div>
+    <div class="panel-body">
+        <p>
+            @Model.description
+        </p>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Tasks</h2>
+    </div>
+    <div class="panel-body panel-table-inserted table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th class="tig-12">Name</th>
+                    <th>Created</th>
+                    @*<th>Deadline</th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Task t in Model.tasks)
+                {
+                    <tr class="middle center">
+                        <td>@t.priority</td>
+                        <td>
+                            @UI.DrawLabel(typeof(TaskStates), t.state, new { @class = "label-grow" })
+                        </td>
+                        <td class="text-left">@t.title</td>
+                        <td class="nowrap">@t.datecreated</td>
+                        @*<td class="nowrap">@t.deadline</td>*@
+                        <td>
+                            @Html.ActionLink("Details", "Details", "Task", new { id = t.id }, new { @class = "btn btn-primary btn-xs" })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <a href="#" data-toggle="modal" data-target="#Create" class="btn btn-success btn-block">Create Task</a>
+        @*@Html.ActionLink("Add", "AddTask", null, new { @class = "btn btn-success btn-block" })*@
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm("Update", "Project", new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal fade modal-primary" id="Edit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Project Edit</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.name, "Name:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.name, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("team", "Team:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("team", dTeams, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.description, "Description:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(m => m.description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Save" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+<div class="modal modal-danger fade" id="Delete" role="alertdialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header modal-no-body modal-header-danger">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Are you sure you want to remove this project?
+                </h4>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                @Html.ActionLink("Delete", "Delete", new { id = Model.id }, new { @class = "btn btn-danger pull-right" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm("CreateFromProjectDetails", "Task", new { id = Model.id }, FormMethod.Post, new { @class = "form-horizontal form-stripped" }))
+{
+    <div class="modal fade modal-success" id="Create" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Taskt</h4>
+                </div>
+                <div class="modal-body modal-table-inserted table-responsive">
+                    <div class="form-group">
+                        @Html.Label("tit", "Title:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBox("tit", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("text", "Text:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextArea("text", null, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("priority", "Priority:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("priority", prior, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            @Html.Label("deadline", "Deadline:", new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextArea("deadline", null, new { @class = "form-control" })
+                            </div>
+                        </div>*@
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success btn-block" value="Create" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
